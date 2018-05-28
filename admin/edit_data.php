@@ -2,10 +2,11 @@
 	$form = new form('1','2');
 	$datadetail = new textfield('data_detail','detail','form-control','','');
 	$lbdetail = new label('รายละเอียดหัวข้อ :');
+	$button = new buttonok('บันทึก','btnSubmit','btn btn-success col-md-12','');
 	$id = $_GET['id'];
 	$rs = $db->findByPK('datawebsite','datawebsite_id',$id)->executeAssoc();
 
-	echo $form->open('form_reg','frmMain','','insert_shop.php','');
+	echo $form->open('form_reg','frmMain','','insert_editdata.php','');
 ?>
 <div class="accordion mt-2" id="accordion">
   <div class="card">
@@ -43,31 +44,46 @@
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body dropzone" id="dropzone">
-	 	 <input name="file" type="file" multiple />
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+	     <div class="file-loading">
+		 	<input id="file-3" type="file" name="image[]" multiple>
+		 </div>
+	  </div>
     </div>
   </div>
-</div>
- <script>
+  <input type="hidden" id="id" value="<?php echo $id;?>">
+  <?php
+		echo $button;
+    ?>
+   <script>
+	 $("#file-3").fileinput({
+        theme: 'fa',
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        overwriteInitial: false,
+        initialPreviewAsData: true,
+        initialPreview: [
+			$.ajax({
+            url: "check_image.php",
+            data: {data_id : $('#id').val()},
+            type: "POST",
+            success: function(data) {
+	            console.log(data);
+            }
+        })
+
+        ],
+    });
+
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
         } );
-        var myDropzone = new Dropzone("div#dropzone", { url: "/file/post"});
 </script>
+<?php
+	echo $form->close();
+?>

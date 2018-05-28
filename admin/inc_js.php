@@ -1,5 +1,10 @@
 <script src="../jquery/jquery-3.2.1.js"></script>
 <script src="../jquery/popper.js"></script>
 <script src="../jquery/bootstrap.min.js"></script>
+<script src="../jquery/plugins/piexif.js"></script>
+<script src="../jquery/plugins/sortable.js"></script>
+<script src="../jquery/plugins/purify.js"></script>
+<script src="../jquery/fileinput.min.js"></script>
+<script src="../jquery/theme.js"></script>
+<script src="../jquery/theme-fa.js"></script>
 <script src="../jquery/ckeditor.js"></script>
-<script src="../jquery/dropzone.js"></script>
