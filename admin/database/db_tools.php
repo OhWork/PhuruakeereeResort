@@ -135,6 +135,10 @@
 			return $this;
 		}
 
+		function specifyfytable($tablemain,$table,$table2,$condition,$column1,$value1){
+			$this->sql = "SELECT $tablemain FROM $table JOIN $table2 WHERE $condition AND $column1 = $value1";
+			return $this;
+		}
 		function in($table,$field,$value){
 			$_value ="";
 			$count = 0;

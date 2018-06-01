@@ -51,10 +51,17 @@
 	  </div>
     </div>
   </div>
-  <input type="hidden" id="id" value="<?php echo $id;?>">
+  <input type="hidden" id="id" name="id" value="<?php echo $id;?>">
   <?php
 		echo $button;
-    ?>
+
+		$rs = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
+		$i = 0;
+		 while ($showrs = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+		$i++;
+		$showimage = $showrs['gallery_path'].$showrs['gallery_name'];
+		}
+		    ?>
    <script>
 	 $("#file-3").fileinput({
         theme: 'fa',
@@ -63,21 +70,25 @@
         browseClass: "btn btn-primary btn-lg",
         fileType: "any",
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-        overwriteInitial: false,
+        overwriteInitial: true,
         initialPreviewAsData: true,
+        <?php
+	        if($i >= 1){
+        ?>
         initialPreview: [
-			$.ajax({
-            url: "check_image.php",
-            data: {data_id : $('#id').val()},
-            type: "POST",
-            success: function(data) {
-	            console.log(data);
-            }
-        })
-
+			<?php
+			for($j = 0; $j < $i; $j++){
+				echo"'../$showimage'"."\r\n";
+				?>
+				,
+				<?php
+			}
+			?>,
         ],
+        <?php
+	        }
+        ?>
     });
-
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
