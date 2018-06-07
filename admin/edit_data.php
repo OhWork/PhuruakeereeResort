@@ -56,11 +56,12 @@
 		echo $button;
 
 		$rs = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
-		$i = 0;
-		 while ($showrs = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
-		$i++;
-		$showimage = $showrs['gallery_path'].$showrs['gallery_name'];
+/*
+		while($show = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+		print_r($show);
 		}
+*/
+// 		echo count($show['gallery_id']);
 		    ?>
    <script>
 	 $("#file-3").fileinput({
@@ -73,22 +74,43 @@
         overwriteInitial: true,
         initialPreviewAsData: true,
         <?php
-	        if($i >= 1){
+	        if($rs){
         ?>
         initialPreview: [
 			<?php
-			for($j = 0; $j < $i; $j++){
-				echo"'../$showimage'"."\r\n";
+				while ($showrs = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+					$showimage = $showrs['gallery_path'].$showrs['gallery_name'];
+					echo"'../$showimage'"."\r\n";
 				?>
 				,
 				<?php
-			}
-			?>,
+				}
+				?>
         ],
+       initialPreviewConfig: [
+	            <?php
+		            for ($i=1; $i<=6; $i++){
+					echo '{'.'key:'."$i".",".'},'."\r\n";
+					}
+	            ?>
+        ]
         <?php
 	        }
         ?>
     });
+/*
+    $('.kv-file-remove').on('click',function(){
+		$.ajax({
+	            url: "delete_pic.php",
+	            data: {id : <?php echo $showid['gallery_id']; ?>},
+	            type: "POST",
+	            dataType: "json",
+	            success: function(data) {
+					console.log(data);
+	            }
+	    });
+    })
+*/
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {

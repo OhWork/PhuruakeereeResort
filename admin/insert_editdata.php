@@ -1,4 +1,5 @@
 <?
+/*
 	include_once 'database/db_tools.php';
 	include_once 'connect.php';
 	$id = $_POST['id'];
@@ -15,19 +16,29 @@
 		}
 		return $randomString;
 	}
-
-	$target_dir = '../img/temp/';
-	$target_file = $target_dir.basename($_FILES['image']['name']);
-	$img_new_name = generateRandomString(10);
-	$target_dir_save = '../img/'.$img_new_name.'.jpg';
-	move_uploaded_file($_FILES['image']['name'], $target_dir_save);
-
+// 	print_r($_FILES['image']['name']);
 	$showidindb = $rs['MAX(gallery_id)'];
-/*
 	if($a == $showidindb){
-		//อัพเดทไปเลยดิ รอไร
-		echo "เท่ากัน";
-	}else{
+// 		กรณีที่อัพรูปมาเท่ากันกับในฐานข้อมูล สามารถอัพเดทไปได้เลยชิวๆไม่ติดอะไร
+		for($i=0; $i<$a; $i++){
+			$target_dir = '../img/temp/';
+			$target_file = $target_dir.basename($_FILES['image']['name'][$i]);
+			$img_new_name = generateRandomString(10);
+			$path = '../img/pic/';
+			$target_dir_save = '../img/pic/'.$img_new_name.'.jpg';
+  		 	move_uploaded_file($_FILES['image']['tmp_name'][$i], $target_dir_save);
+ 		 	echo $i;
+
+			$data['datawebsite_detail'] = $_POST['editor'];
+
+			$rs = $db->update('datawebsite',$data,'datawebsite_id',$_POST['id']);
+
+			$data2['gallery_name'] = $img_new_name;
+			$data2['gallery_path'] = $path;
+			$rs = $db->update('gallery',$data2,'gallery_id',$i);
+		}
+	}else if($a > $showidindb){
+// 		กรณีที่อัพรูปมามากกว่าที่มีในฐานข้อมูล อัพเดทให้ครบกับในฐานข้อมูลจากการวน loop รอบแรก ให้ครบ แล้วเหลือเท่าไหร่ให้นำจำนวนมาวนลูปรอบที่ 2 แล้วทำการ insert
 		for($i=0; $i<$showidindb; $i++){
 			echo "จากตัวแปร I";
 			echo "<pre>";
@@ -43,6 +54,9 @@
 		echo "</pre>";
 
 		}
+	}
+	else{
+// 		กรณีที่อัพรูปมาน้อยกว่า ที่มีในฐานข้อมูล อันดับแรก อัพเดทให้หมด แล้วทำการ Delete ที่เหลือออกจาก ฐานข้อมูล
 	}
 */
 
