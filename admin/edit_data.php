@@ -1,5 +1,5 @@
 <?php
-	$form = new form('1','2');
+	$form = new form();
 	$datadetail = new textfield('data_detail','detail','form-control','','');
 	$lbdetail = new label('รายละเอียดหัวข้อ :');
 	$button = new buttonok('บันทึก','btnSubmit','btn btn-success col-md-12','');
@@ -54,19 +54,10 @@
   <input type="hidden" id="id" name="id" value="<?php echo $id;?>">
   <?php
 		echo $button;
-
-		$rs = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
-/*
-		while($show = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
-		print_r($show);
-		}
-*/
-// 		echo count($show['gallery_id']);
 		    ?>
    <script>
 	 $("#file-3").fileinput({
         theme: 'fa',
-        showUpload: false,
         showCaption: false,
         browseClass: "btn btn-primary btn-lg",
         fileType: "any",
@@ -78,6 +69,7 @@
         ?>
         initialPreview: [
 			<?php
+				$rs = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
 				while ($showrs = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
 					$showimage = $showrs['gallery_path'].$showrs['gallery_name'];
 					echo"'../$showimage'"."\r\n";
@@ -89,28 +81,28 @@
         ],
        initialPreviewConfig: [
 	            <?php
-		            for ($i=1; $i<=6; $i++){
-					echo '{'.'key:'."$i".",".'},'."\r\n";
+		            $rs2 = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
+		           while ($show = mysqli_fetch_array($rs2,MYSQLI_ASSOC)){
+			           echo '{'.'key:'.$show['gallery_id'].'},'."\r\n";
 					}
 	            ?>
-        ]
+        ],
+        deleteUrl:'delete_pic.php',
+        uploadUrl:'insert_editimg.php',
+        uploadExtraData:{id:$('#id').val()},
         <?php
 	        }
         ?>
     });
-/*
-    $('.kv-file-remove').on('click',function(){
-		$.ajax({
-	            url: "delete_pic.php",
-	            data: {id : <?php echo $showid['gallery_id']; ?>},
-	            type: "POST",
-	            dataType: "json",
-	            success: function(data) {
-					console.log(data);
-	            }
-	    });
-    })
-*/
+    $('#file-3').on('fileuploaded', function(event, data, previewId, index) {
+    	location.reload();
+    });
+    $("#file-3").on("filepredelete", function(jqXHR) {
+        var abort = true;
+        if (confirm("Are you sure you want to delete this image?")) {
+            abort = false;
+        }
+        });
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
