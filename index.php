@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="CSS/main.css">
 		<link rel="stylesheet" href="CSS/scss/_input-group.scss">
 		<title></title>
+		<?php
+	     include_once 'inc_js.php';
+	     include_once 'form/main_form.php';
+	     include_once 'form/gridview.php';
+		 include_once 'admin/database/db_tools.php';
+	     include_once 'admin/connect.php';
+		?>
 	</head>
 	<body>
 		<div class="warpper">
@@ -16,35 +23,18 @@
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border-radius:6px;background-color:#ffffff;margin-bottom:5px;">
 								<div class="row">
-									<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
-										<div class="row">
-											<img class="col-12" src="img/noimage.png" width="100%" height="100%">
-										</div>
-									</div>
-									<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
-										<div class="row">
-											<center><p>SLIDE HEAD ONLY</p></center>
-										</div>
-									</div>
+									<?php
+										include_once 'sideshow.php';
+									?>
 								</div>
 							</div>
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="row">
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">Home</a>
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">About</a>
-									<a class="btn btn-secondary col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2" href="#">Accommodations</a>
-									<a class="btn btn-secondary col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2" href="#">Restaurants & Cafe</a>
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">Events</a>
-									<a class="btn btn-secondary col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2" href="#">Travel Tips</a>
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">Booking</a>
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">Payment</a>
-									<a class="btn btn-secondary col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1" href="#">Contact</a>
-								</div>
-							</div>
+							<?php
+								include_once 'menu.php';
+							?>
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border-radius:6px;background-color:#ffffff;margin-top:5px;">
 								<div class="row">
 									<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
-										
+
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 												<div class="row">
 													<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 16px;">
@@ -65,84 +55,39 @@
 													</div>
 												</div>
 											</div>
-										
+
 									</div>
+									<?php
+										$rs2 =$db->findByPK2('gallery','room','gallery_room_id','room_id')->execute();
+									?>
 									<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9" style="border-left: solid 1px #868e96;">
 										<div class="row">
-											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+											<?php
+												while($showroom = mysqli_fetch_array($rs2,MYSQLI_ASSOC)){
+												$showimage = $showroom['gallery_path'].$showroom['gallery_name'];
+											?>
+											<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
 												<div class="row">
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
+													<img class="col-12" src="<?php echo $showimage;?>" width="100%" height="200">
+													<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
+														<p><a href="#">
+															<?php
+																echo $showroom['room_name'];
+															?>
+														</a></P>
 													</div>
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
-													</div>
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
+													<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
+														<p>
+															<?php
+																echo $showroom['room_detail'];
+															?>
+														</P>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-												<div class="row">
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
-													</div>
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
-													</div>
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-														<div class="row">
-															<img class="col-12" src="img/noimage.png" width="100%" height="200">
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>Roomname</P>
-															</div>
-															<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align:right;">
-																<p>price xxxx฿</P>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+											<?php
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -157,3 +102,7 @@
 		</div>
 	</body>
 </html>
+<script>
+	$('#0ol').addClass('active');
+	$('#0').addClass('active');
+</script>

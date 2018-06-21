@@ -14,11 +14,12 @@
 		public $name,$id = null,$cass = null,$hold = null;
 		public $value=null,$functions=null;
 
-		function __construct($name,$id,$cass,$hold){
+		function __construct($name,$id,$cass,$hold,$value){
 			$this->name = $name;
 			$this->cass = $cass;
 			$this->id = $id;
 			$this->hold = $hold;
+			$this->value = $value;
 
 		}
 		function __toString(){
@@ -351,7 +352,7 @@ class labeladdday{
 // 			-----{$this->lists}-----
 // 			</option>
 // 			";
-// 
+//
 // 		while($r = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
 // 			$html.="<option value= '{$r[$value]}'";
 // 		if($r[$value]==$result){

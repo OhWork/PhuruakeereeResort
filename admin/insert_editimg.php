@@ -14,13 +14,13 @@
 		$target_dir = '../img/temp/';
 			$target_file = $target_dir.basename($_FILES['image']['name'][0]);
 			$img_new_name = generateRandomString(10).'.jpg';
-			$path = '../img/pic/';
+			$path = 'img/pic/';
 			$target_dir_save = '../img/pic/'.$img_new_name;
   		 	move_uploaded_file($_FILES['image']['tmp_name'][0], $target_dir_save);
 if($id != "" && $_FILES['image']['name'] != ""){
 		$rs = $db->insert('gallery',array(
 			'gallery_name' => $img_new_name,
-			'gallery_path'=>'img/',
+			'gallery_path'=>$path,
 			'gallery_datawebsite_id'=>$id,
 		));
 		echo json_encode(['uploaded' => $_FILES['image']['name'][0]]);

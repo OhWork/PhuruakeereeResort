@@ -1,11 +1,13 @@
 <?php
 	$form = new form();
+	$datahead = new textfield('data_head','head','form-control','','sss');
+	$lbhead = new label('หัวข้อข้อมูล :');
 	$datadetail = new textfield('data_detail','detail','form-control','','');
 	$lbdetail = new label('รายละเอียดหัวข้อ :');
 	$button = new buttonok('บันทึก','btnSubmit','btn btn-success col-md-12','');
 	$id = $_GET['id'];
 	$rs = $db->findByPK('datawebsite','datawebsite_id',$id)->executeAssoc();
-
+	$datahead->value = $rs['datawebsite_head'];
 	echo $form->open('form_reg','frmMain','','insert_editdata.php','');
 ?>
 <div class="accordion mt-2" id="accordion">
@@ -17,9 +19,20 @@
         </button>
       </h5>
     </div>
-
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
+	  	<div class="col-md-2 float-left">
+	  		<?php
+		  		echo $lbhead;
+	  		?>
+	  	</div>
+	  	<div class="col-md-10 float-right">
+	  	 <?php
+		  	 echo $datahead;
+	  	 ?>
+	  	</div>
+      </div>
+    <div class="card-body mt-3">
 	  	<div class="col-md-2 float-left">
 	  		<?php
 		  		echo $lbdetail;
@@ -71,8 +84,8 @@
 			<?php
 				$rs = $db->findByPK22('gallery','datawebsite','gallery_datawebsite_id','datawebsite_id','gallery_datawebsite_id',"'$id'")->execute();
 				while ($showrs = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
-					$showimage = $showrs['gallery_path'].$showrs['gallery_name'];
-					echo"'../$showimage'"."\r\n";
+					$showimage = '../'.$showrs['gallery_path'].$showrs['gallery_name'];
+					echo"'$showimage'"."\r\n";
 				?>
 				,
 				<?php
