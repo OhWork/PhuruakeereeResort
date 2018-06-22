@@ -21,6 +21,7 @@ if($_POST){
 	'reserve_numadults' => $_POST['num_adults'],
 	'reserve_numchildren' => $_POST['num_children'],
 	'reserve_numinfants' => $_POST['num_infants'],
+	'reserve_status' => $_POST['status'],
 	'room_room_id' => $_POST['roomname']
 	));
 }

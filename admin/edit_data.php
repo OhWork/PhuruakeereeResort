@@ -5,10 +5,13 @@
 	$datadetail = new textfield('data_detail','detail','form-control','','');
 	$lbdetail = new label('รายละเอียดหัวข้อ :');
 	$button = new buttonok('บันทึก','btnSubmit','btn btn-success col-md-12','');
-	$id = $_GET['id'];
+	@$id = $_GET['id'];
 	$rs = $db->findByPK('datawebsite','datawebsite_id',$id)->executeAssoc();
 	$datahead->value = $rs['datawebsite_head'];
 	echo $form->open('form_reg','frmMain','','insert_editdata.php','');
+?>
+<?php
+	if($id != ''){
 ?>
 <div class="accordion mt-2" id="accordion">
   <div class="card">
@@ -64,7 +67,7 @@
 	  </div>
     </div>
   </div>
-  <input type="hidden" id="id" name="id" value="<?php echo $id;?>">
+  <input type="hidden" id="id" name="datawebsite_id" value="<?php echo $id;?>">
   <?php
 		echo $button;
 		    ?>
@@ -123,5 +126,77 @@
         } );
 </script>
 <?php
+	}
+	else{
+		$rs =$db->findbyPK22('reserve','room','room_room_id','room_id','room_id',$_GET['reserve_id'])->executeAssoc();
+	?>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-4">
+						<p>ชื่อห้องที่ต้องการจอง :</p>
+					</div>
+					<div class="col-md-4">
+						<?php
+						echo $rs['room_name'];
+						?>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-4">
+						<p>ชื่อผู้จอง :</p>
+					</div>
+					<div class="col-md-4">
+						<?php
+							echo $rs['reserve_name'];
+						?>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-4">
+						<p>เบอร์ติดต่อกลับ :</p>
+					</div>
+					<div class="col-md-4">
+						<?php
+							echo $rs['reserve_tel'];
+						?>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-4">
+						<p>emailติดต่อกลับ :</p>
+					</div>
+					<div class="col-md-4">
+						<?php
+							echo $rs['reseve_email'];
+						?>
+					</div>
+					<div class='col-md-12'>
+					<div class='row'>
+						<div class='col-md-4'></div>
+						<div class="btn-group col-md-4" data-toggle="buttons">
+							<label class="btn btn-success col-md-6 active">
+							  <input type="radio" name="status_reserve" class="statusconfirm" value="Y" id="complete" autocomplete="off"  checked> อนุมัติการจอง
+							</label>
+							<label class="btn btn-danger col-md-6">
+							  <input type="radio" name="status_reserve" class="statusconfirm" value="N" id="nocomplete" autocomplete="off"> ไม่อนุมัติการจอง
+							</label>
+						</div>
+						<div class='col-md-4'></div>
+					</div>
+					<div class='col-md-12'>
+						<div class='row'>
+							<div class='col-md-4'>
+								<?php
+									echo $button;
+								?>
+								<input type="hidden" id="id" name="reserve_id" value="<?php echo $_GET['reserve_id'];?>">
+							</div>
+						</div>
+					<divฬ
+				</div>
+			</div>
+		</div>
+	<?php }
 	echo $form->close();
 ?>

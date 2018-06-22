@@ -138,6 +138,7 @@
 																<input type="hidden" name="num_adults" value="<?php echo $_POST['num_adults']?>">
 																<input type="hidden" name="num_children" value="<?php echo $_POST['num_children']?>">
 																<input type="hidden" name="num_infants" value="<?php echo $_POST['num_infants']?>">
+																<input type="hidden" name="status" value="W">
 															</div>
 														</div>
 														<div class="col-md-5">
