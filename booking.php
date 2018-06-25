@@ -89,152 +89,143 @@
 				<div class="row">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border-radius:6px;background-color:#ffffff;margin-bottom:5px;">
-								<div class="row">
-									<?php
-										include_once 'sideshow.php';
-									?>
-								</div>
-							</div>
+							<?php
+								include_once 'sideshow.php';
+							?>
 							<?php
 								include_once 'menu.php';
 							?>
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border-radius:6px;background-color:#ffffff;margin-top:5px;">
 								<div class="row">
-									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-										<?php
-											echo $form->open('form_reg','frmMain','','booking2.php','');
-										?>
-											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<?php
+									echo $form->open('form_reg','frmMain','','booking2.php','');
+								?>
+									<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8" style="margin-top: 16px;">
+										<div class="row">
+											<div class="col-md-12">
 												<div class="row">
-													<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8" style="margin-top: 16px;">
-														<div class="col-md-12">
-															<div class="row">
-																<div class="col-md-2">
-																	<p>ประเภทห้อง: </p>
-																</div>
-																<div class="col-md-4">
-																	<?php
-                                                                      $rs = $db->findAll('roomtype')->execute();
-																	?>
-																	<select name="roomtype" class="form-control" id="selroomtype">
-																		<option value=""> ------- เลือก ------ </option>
-																	<?php
-																	while($showdata = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
-																	?>
-																		<option value="<?php echo $showdata['roomtype_id']?>"><?php echo $showdata['roomtype_name']?></option>
-																	<?php
-																	}
-																	?>
-																	</select>
-																</div>
-																<div class="col-md-2">
-																	<p>ห้อง: </p>
-																</div>
-																<div class="col-md-4">
-																	<select class="form-control col-12" name="roomname" id="selroom">
-																				<option value=""> ------- เลือก ------ </option>
-																				</select><span id="waitroom"></span>
-																				</span>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-12 mt-3">
-															<div class="row">
-																<div class="col-md-2">
-																	<p>วันที่ต้องการจอง: </p>
-																</div>
-																<div class="col-md-4">
-																	<div class='input-group date' id ="datetimepicker">
-														                <input type='text' class="form-control datetimepicker" name="date_start" id='date' readonly/>
-														                <span class="input-group-addon datetimepicker-addon">
-																	    	<span class="glyphicon glyphicon-calendar"></span>
-																		</span>
-														            </div>
-																</div>
-																<div class="col-md-1">
-																	<p> TO</p>
-																</div>
-																<div class="col-md-4">
-																	<div class='input-group date' id ="datetimepicker2">
-														                <input type='text' class="form-control datetimepicker" name="date_end" id='date2' readonly/>
-														                <span class="input-group-addon datetimepicker-addon">
-																	    	<span class="glyphicon glyphicon-calendar"></span>
-																		</span>
-														            </div>
-																</div>
-																<div class="col-md-1" id="showcal">
-																	<p> calculation</p>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-12 mt-3">
-															<div class="row">
-																<div class="col-md-3">
-																	<p>Adults</p>
-																	<select name="num_adults" class="form-control" id="num_adults">
-																		<option value=""> ------- เลือก ------ </option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																	</select>
-																</div>
-																<div class="col-md-3">
-																	<p>Children</p>
-																	<select name="num_children" class="form-control" id="num_children">
-																		<option value=""> ------- เลือก ------ </option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																	</select>
-																</div>
-																<div class="col-md-3">
-																	<p>Infants</p>
-																	<select name="num_infants" class="form-control" id="num_infants">
-																		<option value=""> ------- เลือก ------ </option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																	</select>
-																</div>
-																<div class="col-md-3">
-																	<p>****หมายเหตุ****</p>
-																	<p>ห้องพักสามารถเพิ่มเตียงเสริมได้ 1 เตียงเท่านั้น</p>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-12 mt-3">
-															<div class="row">
-																<div class="col-md-2"></div>
-																<div class="col-md-4">
-																	<button type="button" class="btn btn-primary form-control" id="checkprice">Check Price</button>
-																</div>
-																<div class="col-md-5">
-																	<p>Room Price</p>
-																	<input type="text" class="form-control" id="roomprice" readonly>
-																	<p>Extral Person Price</p>
-																	<input type="text" class="form-control" id="exprice" readonly>
-																	<p>Total Price</p>
-																	<input type="text" class="form-control" id="totalprice" readonly>
-																</div>
-															</div>
-														</div>
-														<div class="col-md-12 mt-3">
-															<div class="row">
-																<div class="col-md-2"></div>
-																<div class="col-md-4">
-																	<?php
-																		echo $button;
-																	?>
-																</div>
-															</div>
-														</div>
+													<div class="col-md-2">
+														<p>ประเภทห้อง: </p>
 													</div>
-													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" style="margin-top: 16px;" id="showroom">
-
+													<div class="col-md-4">
+														<?php
+															$rs = $db->findAll('roomtype')->execute();
+														?>
+														<select name="roomtype" class="form-control" id="selroomtype">
+														<option value=""> ------- เลือก ------ </option>
+														<?php
+															while($showdata = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+														?>
+														<option value="<?php echo $showdata['roomtype_id']?>"><?php echo $showdata['roomtype_name']?></option>
+														<?php
+															}
+														?>
+														</select>
+													</div>
+													<div class="col-md-2">
+														<p>ห้อง: </p>
+													</div>
+													<div class="col-md-4">
+														<select class="form-control col-12" name="roomname" id="selroom">
+														<option value=""> ------- เลือก ------ </option>
+														</select><span id="waitroom"></span>
 													</div>
 												</div>
 											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-3">
+														<p>วันที่ต้องการจอง: </p>
+													</div>
+													<div class="col-md-3">
+														<div class='input-group date' id ="datetimepicker">
+														    <input type='text' class="form-control datetimepicker" name="date_start" id='date' readonly/>
+														    <span class="input-group-addon datetimepicker-addon">
+																<span class="glyphicon glyphicon-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-md-1">
+														<p>ถึง</p>
+													</div>
+													<div class="col-md-3">
+														<div class='input-group date' id ="datetimepicker2">
+														    <input type='text' class="form-control datetimepicker" name="date_end" id='date2' readonly/>
+														    <span class="input-group-addon datetimepicker-addon">
+																<span class="glyphicon glyphicon-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-md-2" id="showcal">
+														<p> calculation</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-3">
+														<p>ผู้ใหญ่</p>
+														<select name="num_adults" class="form-control" id="num_adults">
+															<option value=""> ------- เลือก ------ </option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+														</select>
+													</div>
+													<div class="col-md-3">
+														<p>เด็ก (6-12)</p>
+														<select name="num_children" class="form-control" id="num_children">
+														<option value=""> ------- เลือก ------ </option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														</select>
+													</div>
+													<div class="col-md-3">
+														<p>เด็ก (0-6)</p>
+														<select name="num_infants" class="form-control" id="num_infants">
+														<option value=""> ------- เลือก ------ </option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														</select>
+													</div>
+													<div class="col-md-3" style="color:red;">
+														<p>****หมายเหตุ****</p>
+														<p>ห้องพักสามารถเพิ่มเตียงเสริมได้ 1 เตียงเท่านั้น</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-2"></div>
+													<div class="col-md-4">
+														<button type="button" class="btn btn-primary form-control" id="checkprice">Check Price</button>
+													</div>
+													<div class="col-md-5">
+														<p>Room Price</p>
+														<input type="text" class="form-control" id="roomprice" readonly>
+														<p>Extral Person Price</p>
+														<input type="text" class="form-control" id="exprice" readonly>
+														<p>Total Price</p>
+														<input type="text" class="form-control" id="totalprice" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-4"></div>
+													<div class="col-md-4">
+														<?php
+															echo $button;
+														?>
+													</div>
+													<div class="col-md-4"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" style="margin-top: 16px;" id="showroom"></div>
 									</div>
 								</div>
 							</div>

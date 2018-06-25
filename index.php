@@ -21,13 +21,9 @@
 				<div class="row">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border-radius:6px;background-color:#ffffff;margin-bottom:5px;">
-								<div class="row">
-									<?php
-										include_once 'sideshow.php';
-									?>
-								</div>
-							</div>
+							<?php
+								include_once 'sideshow.php';
+							?>	
 							<?php
 								include_once 'menu.php';
 							?>
