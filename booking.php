@@ -198,18 +198,35 @@
 											</div>
 											<div class="col-md-12 mt-3">
 												<div class="row">
-													<div class="col-md-2"></div>
+													<div class="col-md-4"></div>
 													<div class="col-md-4">
-														<button type="button" class="btn btn-primary form-control" id="checkprice">Check Price</button>
+														<button type="button" class="btn btn-primary form-control" id="checkprice">เช็คราคา</button>
 													</div>
-													<div class="col-md-5">
-														<p>Room Price</p>
-														<input type="text" class="form-control" id="roomprice" readonly>
-														<p>Extral Person Price</p>
-														<input type="text" class="form-control" id="exprice" readonly>
-														<p>Total Price</p>
-														<input type="text" class="form-control" id="totalprice" readonly>
-													</div>
+													<div class="col-md-4"></div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-4"></div>
+													<p class="col-md-2">ราคาห้อง</p>
+													<input type="text" class="form-control col-md-2" id="roomprice" readonly>
+													<div class="col-md-4"></div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-4"></div>
+													<p class="col-md-2">ราคาพิเศษ</p>
+													<input type="text" class="form-control col-md-2" id="exprice" readonly>
+													<div class="col-md-4"></div>
+												</div>
+											</div>
+											<div class="col-md-12 mt-3">
+												<div class="row">
+													<div class="col-md-4"></div>
+													<p class="col-md-2">ราคารวม</p>
+													<input type="text" class="form-control col-md-2" id="totalprice" readonly>
+													<div class="col-md-4"></div>
 												</div>
 											</div>
 											<div class="col-md-12 mt-3">
