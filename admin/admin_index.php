@@ -27,7 +27,7 @@
 				include_once 'admin_menu.php';
 				?>
 				</div>
-				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top:5px;">
 				<?php
 				include_once 'content.php';
 				?>
