@@ -8,6 +8,7 @@
 	@$id = $_GET['id'];
 	$rs = $db->findByPK('datawebsite','datawebsite_id',$id)->executeAssoc();
 	$datahead->value = $rs['datawebsite_head'];
+	echo $id;
 	echo $form->open('form_reg','frmMain','','insert_editdata.php','');
 ?>
 <?php

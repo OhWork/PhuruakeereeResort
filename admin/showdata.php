@@ -64,7 +64,7 @@
 				<div class="jumbotron mt-2">
 				  <h1 class="display-5 "><?php echo $showroom['room_name'] ?></h1>
 				  <h4 class="display-5 "><?php echo $showroom['room_detail'] ?></h4>
-				  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showroom['room_id'];?>" role="button">แก้ไข</a>
+				  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showroom['room_id'];?>" role="button">แก้ไข</a>
 				</div>
 				<?php
 				 }
@@ -82,7 +82,7 @@
 			<div class="jumbotron mt-2">
 			  <h1 class="display-5 "><?php echo $showdata['datawebsite_head'] ?></h1>
 			  <h4 class="display-5 "><?php echo $showdata['datawebsite_detail'] ?></h4>
-			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
+			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
 			</div>
 		<?php
 		}
@@ -96,7 +96,7 @@
 			<div class="jumbotron mt-2">
 			  <h1 class="display-5 "><?php echo $showdata['datawebsite_head'] ?></h1>
 			  <h4 class="display-5 "><?php echo $showdata['datawebsite_detail'] ?></h4>
-			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
+			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
 			</div>
 		<?php
 		}
@@ -110,7 +110,7 @@
 			<div class="jumbotron mt-2">
 			 <h1 class="display-5 "><?php echo $showdata['datawebsite_head'] ?></h1>
 			  <h4 class="display-5 "><?php echo $showdata['datawebsite_detail'] ?></h4>
-			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
+			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
 			</div>
 		<?php
 		}
@@ -141,7 +141,7 @@
 			<div class="jumbotron mt-2">
 			 <h1 class="display-5 "><?php echo $showdata['datawebsite_head'] ?></h1>
 			  <h4 class="display-5 "><?php echo $showdata['datawebsite_detail'] ?></h4>
-			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
+			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
 			</div>
 		<?php
 		}
@@ -155,7 +155,7 @@
 			<div class="jumbotron mt-2">
 			  <h1 class="display-5 "><?php echo $showdata['datawebsite_head'] ?></h1>
 			  <h4 class="display-5 "><?php echo $showdata['datawebsite_detail'] ?></h4>
-			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&datawebsite_id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
+			  <a class="btn btn-primary btn-lg float-right" href="admin_index.php?url=edit_data.php&id=<?php echo $showdata['datawebsite_id'];?>" role="button">แก้ไข</a>
 			</div>
 		<?php
 		}
